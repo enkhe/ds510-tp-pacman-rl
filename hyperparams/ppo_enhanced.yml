@@ -1,0 +1,54 @@
+# Enhanced PPO hyperparameters for better Ms. Pac-Man performance
+# This configuration improves upon the default Atari settings
+
+# Enhanced Atari configuration with better hyperparameters
+ALE/MsPacman-v5:
+  env_wrapper:
+    - stable_baselines3.common.atari_wrappers.AtariWrapper
+  frame_stack: 4
+  policy: 'CnnPolicy'
+  # Increased parallel environments for more diverse experience collection
+  n_envs: 16
+  # Larger rollout buffer for more stable learning
+  n_steps: 256
+  # More training epochs per update for better convergence
+  n_epochs: 8
+  # Larger batch size for more stable gradients
+  batch_size: 512
+  # More training timesteps for better performance
+  n_timesteps: !!float 2e7
+  # Learning rate schedule that starts higher and decays
+  learning_rate: lin_5e-4
+  # Clip range schedule for better exploration-exploitation balance
+  clip_range: lin_0.1
+  # Higher value function coefficient for better value estimation
+  vf_coef: 0.75
+  # Lower entropy coefficient for more focused policy
+  ent_coef: 0.005
+  # GAE lambda for better advantage estimation
+  gae_lambda: 0.98
+  # Discount factor
+  gamma: 0.99
+  # Gradient clipping for stability
+  max_grad_norm: 0.5
+  # Policy network architecture
+  policy_kwargs: "dict(
+                    net_arch=dict(pi=[512, 512, 256], vf=[512, 512, 256]),
+                    activation_fn=nn.ReLU
+                  )"
+
+# Default atari config for other games
+atari:
+  env_wrapper:
+    - stable_baselines3.common.atari_wrappers.AtariWrapper
+  frame_stack: 4
+  policy: 'CnnPolicy'
+  n_envs: 8
+  n_steps: 128
+  n_epochs: 4
+  batch_size: 256
+  n_timesteps: !!float 1e7
+  learning_rate: lin_2.5e-4
+  clip_range: lin_0.1
+  vf_coef: 0.5
+  ent_coef: 0.01
