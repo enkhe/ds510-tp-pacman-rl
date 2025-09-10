@@ -18,6 +18,21 @@
 > - Project-specific docs (`MsPacman_GUI_Training.md`, `MsPacman_RL_Documentation.md`) and plotting utilities
 > - Simplified entry points (`train.py`, `enjoy.py`) and course-oriented README
 
+## Open‑source libraries used (acknowledgements)
+
+This project stands on the shoulders of awesome open‑source work. Core dependencies include:
+
+- Stable‑Baselines3 — RL algorithms and policies: https://github.com/DLR-RM/stable-baselines3
+- RL Baselines3 Zoo — training framework and tooling: https://github.com/DLR-RM/rl-baselines3-zoo
+- Gym / Gymnasium — environment API and Atari envs
+  - Default in this fork: Gym 0.26.x (Ms. Pac‑Man NoFrameskip‑v4)
+  - Optional: Gymnasium with ALE v5 ids (e.g., `ALE/MsPacman-v5`)
+  - Gymnasium extras for Atari: `gymnasium[atari]`, `ale-py`, and `AutoROM` (for ROM installation)
+- Environment packages: `box2d-py`, `pybullet_envs_gymnasium`
+- Experiment and plotting: `wandb` (optional), `plotly`, `moviepy`, `cloudpickle`, `optunahub`
+
+Links to individual project licenses are available on their respective repositories. See `requirements.txt` for pinned versions used here.
+
 ## What’s modified in this DS510 fork (comprehensive)
 
 - Ms. Pac‑Man focus and GUI training
